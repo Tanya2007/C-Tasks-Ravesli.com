@@ -5,7 +5,7 @@
 
 double inputValue()
 {
-	std::regex double_regex("\\d+\\.?\\d+");
+	std::regex double_regex("\\d+\\.?\\d*");
 	std::string value{"0"};
 	while(true)
 	{
