@@ -1,0 +1,60 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+long long inputValue()
+{
+    long long value{};
+    while(true)
+    {
+        std::cin >> value;
+        
+        if (std::cin.fail() || value < 0)
+        {
+            std::cin.clear(); 
+            std::cin.ignore(32767,'\n'); 
+        }
+        else
+        {
+            std::cin.ignore(32767, '\n');
+            return value;
+        }
+        
+        std::cout << "\nInvalid input, try again: ";
+    }
+}
+
+int main()
+{
+	std::cout << "Enter the number of segments: ";
+	long long count(inputValue());
+	
+	std::cout << "Enter the lengths of the segments: ";
+	std::vector<long long> lengthsSegment(count);
+	
+	for(std::size_t i{}; i < count; ++i)
+	{
+		lengthsSegment[i] = inputValue();
+	}             
+	
+	int numberTriangles(0);
+	std::sort(lengthsSegment.begin(), lengthsSegment.end());
+	
+	for(std::size_t i{}; i < count - 2; ++i)
+	{
+		for(std::size_t j{i + 1}; j < count - 1; ++j)
+		{
+			for(std::size_t k{j + 1}; k < count; ++k)
+			{
+				if(lengthsSegment[i] + lengthsSegment[j] > lengthsSegment[k])
+				{
+					++numberTriangles;
+				}
+			}
+		}
+	}	
+	
+	std::cout << "Number of triangles: " << numberTriangles << "\n";
+	
+	return 0;
+}                                                                                         
