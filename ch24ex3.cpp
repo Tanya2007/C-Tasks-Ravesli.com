@@ -2,7 +2,6 @@
 #include <string>
 #include <vector>
 #include <random>
-#include <algorithm>
 
 #define UTF8_encoded_file	1			//Indicates that the source file is encoded in utf8 
 //(1 if yes, and 0 if no (i.e. if the file encoding is in ANSI)).
